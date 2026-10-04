@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الوثبة سكول - EL WATHBA SCHOOL | الهاشمية - البويرة</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brandNavy: {
+                            50: '#f0f3fa',
+                            100: '#dbe2f3',
+                            500: '#2b4282',
+                            600: '#1e2f65',
+                            800: '#17234a',
+                            900: '#101730',
+                        },
+                        brandGold: {
+                            400: '#fcc02e',
+                            500: '#f1ad0d',
+                            600: '#d89304',
+                        }
+                    },
+                    fontFamily: {
+                        arabic: ['Cairo', 'sans-serif'],
+                        latin: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Cairo', 'Plus Jakarta Sans', sans-serif;
+        }
+        .hero-pattern {
+            background: linear-gradient(135deg, #101730 0%, #1e2f65 55%, #2b4282 100%);
+        }
+        .gold-badge {
+            background: linear-gradient(135deg, #fcc02e 0%, #f1ad0d 100%);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 antialiased transition-colors duration-300">
+
+    <div class="bg-brandNavy-900 text-slate-200 text-xs py-2.5 px-4 border-b border-brandNavy-800">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-3">
+            <div class="flex flex-wrap items-center gap-4 text-xs font-semibold">
+                <a href="tel:0796955370" class="flex items-center gap-1.5 hover:text-brandGold-400 transition-colors">
+                    <i class="fa-solid fa-phone text-brandGold-400"></i>
+                    <span dir="ltr">0796 95 53 70</span>
+                </a>
+                <span class="text-slate-600">|</span>
+                <a href="tel:026871701" class="flex items-center gap-1.5 hover:text-brandGold-400 transition-colors">
+                    <i class="fa-solid fa-phone-office text-brandGold-400"></i>
+                    <span dir="ltr">026 87 17 01</span>
+                </a>
+                <span class="text-slate-600 hidden sm:inline">|</span>
+                <a href="mailto:elwathbaschool1@gmail.com" class="hidden sm:flex items-center gap-1.5 hover:text-brandGold-400 transition-colors">
+                    <i class="fa-solid fa-envelope text-brandGold-400"></i>
+                    <span>elwathbaschool1@gmail.com</span>
+                </a>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <span class="hidden md:flex items-center gap-1 text-slate-300">
+                    <i class="fa-solid fa-location-dot text-brandGold-400"></i>
+                    <span id="top-location">الهاشمية - البويرة</span>
+                </span>
+                
+                <!-- Language Switcher Toggle -->
+                <div class="flex items-center bg-brandNavy-800 rounded-lg p-1 border border-brandNavy-600">
+                    <button onclick="setLanguage('ar')" id="btn-lang-ar" class="px-2.5 py-0.5 rounded text-xs font-bold bg-brandGold-400 text-brandNavy-900 transition-all">عربي</button>
+                    <button onclick="setLanguage('fr')" id="btn-lang-fr" class="px-2.5 py-0.5 rounded text-xs font-bold text-slate-300 hover:text-white transition-all">FR</button>
+                </div>
+
+                <!-- Theme Toggle -->
+                <button onclick="toggleTheme()" class="p-1 rounded-md hover:bg-brandNavy-800 text-slate-300 transition-colors" title="Toggle Mode">
+                    <i class="fa-solid fa-moon dark:hidden"></i>
+                    <i class="fa-solid fa-sun hidden dark:block text-brandGold-400"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <nav class="sticky top-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                
+                <!-- Brand Logo -->
+                <a href="#" class="flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-xl bg-brandNavy-600 flex items-center justify-center text-brandGold-400 font-extrabold text-2xl shadow-md border-2 border-brandGold-400">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl font-black text-brandNavy-900 dark:text-white block leading-tight tracking-tight" id="logo-title">الوثبة سكول</span>
+                        <span class="text-xs font-extrabold text-brandGold-600 dark:text-brandGold-400 uppercase tracking-wider block" id="logo-subtitle">EL WATHBA SCHOOL</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <div class="hidden lg:flex items-center gap-8 font-bold text-sm">
+                    <a href="#accueil" class="text-brandNavy-600 dark:text-brandGold-400 hover:text-brandGold-600 transition-colors" id="nav-home">الرئيسية</a>
+                    <a href="#levels" class="hover:text-brandNavy-600 dark:hover:text-brandGold-400 transition-colors" id="nav-levels">الأطوار التعليمية</a>
+                    <a href="#services" class="hover:text-brandNavy-600 dark:hover:text-brandGold-400 transition-colors" id="nav-services">خدماتنا ودروس الدعم</a>
+                    <a href="#calculator" class="hover:text-brandNavy-600 dark:hover:text-brandGold-400 transition-colors" id="nav-calculator">حاسبة التسجيل</a>
+                    <a href="#contact" class="hover:text-brandNavy-600 dark:hover:text-brandGold-400 transition-colors" id="nav-contact">اتصل بنا</a>
+                </div>
+
+                <!-- Action Button -->
+                <div class="hidden sm:flex items-center gap-3">
+                    <a href="#inscription" class="gold-badge hover:brightness-105 text-brandNavy-900 font-extrabold px-5 py-2.5 rounded-xl shadow-md hover:shadow-lg transition-all text-sm flex items-center gap-2">
+                        <i class="fa-solid fa-user-plus"></i>
+                        <span id="nav-btn-register">تسجيل تلميذ جديد</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer -->
+        <div id="mobile-menu" class="hidden lg:hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 pt-2 pb-6 space-y-3 font-semibold text-sm">
+            <a href="#accueil" onclick="toggleMobileMenu()" class="block py-2 text-brandNavy-600 dark:text-brandGold-400" id="m-nav-home">الرئيسية</a>
+            <a href="#levels" onclick="toggleMobileMenu()" class="block py-2 hover:text-brandNavy-600" id="m-nav-levels">الأطوار التعليمية</a>
+            <a href="#services" onclick="toggleMobileMenu()" class="block py-2 hover:text-brandNavy-600" id="m-nav-services">خدماتنا ودروس الدعم</a>
+            <a href="#calculator" onclick="toggleMobileMenu()" class="block py-2 hover:text-brandNavy-600" id="m-nav-calc">حاسبة التسجيل</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block py-2 hover:text-brandNavy-600" id="m-nav-contact">اتصل بنا</a>
+            <a href="#inscription" onclick="toggleMobileMenu()" class="block w-full text-center gold-badge text-brandNavy-900 font-extrabold py-3 rounded-xl mt-4" id="m-nav-btn">
+                تسجيل تلميذ جديد
+            </a>
+        </div>
+    </nav>
+
+    <section id="accueil" class="relative overflow-hidden hero-pattern text-white py-20 lg:py-28">
+        <div class="absolute -top-32 -right-32 w-96 h-96 bg-brandGold-400/20 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-32 -left-32 w-96 h-96 bg-brandNavy-500/40 rounded-full blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-start">
+                    <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 text-brandGold-400 text-xs sm:text-sm font-bold">
+                        <i class="fa-solid fa-award"></i>
+                        <span id="hero-badge">مؤسسة تعليمية وتدريبية متميزة - الهاشمية البويرة</span>
+                    </div>
+
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black leading-tight">
+                        <span class="text-brandGold-400 block" id="hero-title-1">مدرسة الوثبة سكول</span>
+                        <span class="text-2xl sm:text-4xl text-slate-100 font-extrabold mt-2 block" id="hero-slogan">أكبر من مجرد مدرسة ... نحن عائلة</span>
+                    </h1>
+
+                    <p class="text-slate-300 text-base sm:text-lg max-w-2xl leading-relaxed" id="hero-description">
+                        نقدم بيئة تعليمية متكاملة تجمع بين التأطير التربوي العالي، الدروس التدعيمية المكثفة، تعليم اللغات الحية، وأقسام براعم التحضيرية لبناء جيل متميز وواثق.
+                    </p>
+
+                    <!-- Main Offered Tags -->
+                    <div class="flex flex-wrap justify-center lg:justify-start gap-2 pt-2">
+                        <span class="bg-white/10 px-3.5 py-1.5 rounded-lg text-xs font-bold text-slate-200 border border-white/10" id="tag-primary">الابتدائي</span>
+                        <span class="bg-white/10 px-3.5 py-1.5 rounded-lg text-xs font-bold text-slate-200 border border-white/10" id="tag-middle">المتوسط</span>
+                        <span class="bg-white/10 px-3.5 py-1.5 rounded-lg text-xs font-bold text-slate-200 border border-white/10" id="tag-high">الثانوي</span>
+                        <span class="bg-brandGold-400/20 px-3.5 py-1.5 rounded-lg text-xs font-bold text-brandGold-400 border border-brandGold-400/30" id="tag-languages">تعليم اللغات</span>
+                        <span class="bg-brandGold-400/20 px-3.5 py-1.5 rounded-lg text-xs font-bold text-brandGold-400 border border-brandGold-400/30" id="tag-preschool">أقسام براعم</span>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-6">
+                        <a href="#inscription" class="w-full sm:w-auto px-8 py-4 gold-badge hover:brightness-105 text-brandNavy-900 font-black rounded-xl shadow-xl transition-all flex items-center justify-center gap-3">
+                            <span id="hero-btn-apply">سجل ابنك الآن</span>
+                            <i class="fa-solid fa-arrow-left id-arrow"></i>
+                        </a>
+                        <a href="tel:0796955370" class="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold rounded-xl transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-phone text-brandGold-400"></i>
+                            <span id="hero-btn-call">إتصال مباشر</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Contact Card Preview -->
+                <div class="lg:col-span-5">
+                    <div class="bg-slate-900/90 border border-slate-700 p-6 sm:p-8 rounded-3xl backdrop-blur-xl shadow-2xl space-y-6">
+                        <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+                            <div>
+                                <h3 class="text-xl font-extrabold text-white">بطاقة التواصل السريع</h3>
+                                <p class="text-xs text-brandGold-400 font-bold mt-1">الوثبة سكول - El Wathba School</p>
+                            </div>
+                            <div class="w-10 h-10 rounded-xl bg-brandGold-400 text-brandNavy-900 flex items-center justify-center font-bold text-lg">
+                                <i class="fa-solid fa-address-card"></i>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4 text-sm">
+                            <a href="tel:0796955370" class="flex items-center gap-4 p-3 bg-white/5 rounded-xl border border-white/10 hover:border-brandGold-400 transition-all">
+                                <i class="fa-solid fa-mobile-screen text-xl text-brandGold-400"></i>
+                                <div>
+                                    <p class="text-xs text-slate-400">الهاتف المحمول / واتساب</p>
+                                    <p class="font-extrabold text-white" dir="ltr">0796 95 53 70</p>
+                                </div>
+                            </a>
+
+                            <a href="tel:026871701" class="flex items-center gap-4 p-3 bg-white/5 rounded-xl border border-white/10 hover:border-brandGold-400 transition-all">
+                                <i class="fa-solid fa-phone text-xl text-brandGold-400"></i>
+                                <div>
+                                    <p class="text-xs text-slate-400">الهاتف الثابت</p>
+                                    <p class="font-extrabold text-white" dir="ltr">026 87 17 01</p>
+                                </div>
+                            </a>
+
+                            <a href="https://facebook.com" target="_blank" class="flex items-center gap-4 p-3 bg-white/5 rounded-xl border border-white/10 hover:border-brandGold-400 transition-all">
+                                <i class="fa-brands fa-facebook text-xl text-brandGold-400"></i>
+                                <div>
+                                    <p class="text-xs text-slate-400">صفحة الفايسبوك الرسمية</p>
+                                    <p class="font-extrabold text-white">Elwathba School</p>
+                                </div>
+                            </a>
+
+                            <div class="flex items-center gap-4 p-3 bg-white/5 rounded-xl border border-white/10">
+                                <i class="fa-solid fa-location-dot text-xl text-brandGold-400"></i>
+                                <div>
+                                    <p class="text-xs text-slate-400">المقر الرئيسي</p>
+                                    <p class="font-extrabold text-white">الهاشمية - ولاية البويرة</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="levels" class="py-20 bg-white dark:bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brandNavy-600 dark:text-brandGold-400 font-extrabold text-xs uppercase tracking-wider bg-brandNavy-50 dark:bg-brandNavy-900 px-3.5 py-1.5 rounded-full border border-brandNavy-100 dark:border-brandNavy-800" id="sec-levels-badge">الأطوار التعليمية الشاملة</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-brandNavy-900 dark:text-white mt-3" id="sec-levels-title">المراحل الدراسية بمدرسة الوثبة</h2>
+                <p class="text-slate-600 dark:text-slate-400 mt-3 text-sm sm:text-base" id="sec-levels-desc">تغطية تعليمية وتدعيمية متكاملة لجميع الفئات والمراحل الدراسية وفق مناهج حديثة وتأطير متمرس.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <!-- Primary Level -->
+                <div class="bg-slate-50 dark:bg-slate-800/60 rounded-3xl p-8 border border-slate-200 dark:border-slate-700/80 hover:border-brandGold-400 transition-all shadow-sm hover:shadow-xl flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-brandGold-400 text-brandNavy-900 flex items-center justify-center font-black text-2xl mb-6 shadow-md">
+                            <i class="fa-solid fa-child text-3xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-black text-brandNavy-900 dark:text-white mb-2" id="lvl-primary-title">الطور الابتدائي</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6" id="lvl-primary-desc">
+                            بناء القاعدة التأسيسية المتينة في القراءة، الكتابة، الحساب واللغات، مع مراعاة الفروق الفردية وترسيخ حب التعلم.
+                        </p>
+                    </div>
+                    <ul class="space-y-2.5 border-t border-slate-200 dark:border-slate-700 pt-6 text-xs font-bold text-slate-700 dark:text-slate-300">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brandGold-500"></i> <span id="lp-1">متابعة يومية مستمرة للواجبات</span></li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brandGold-500"></i> <span id="lp-2">تقوية اللغات (عربية، فرنسية، إنجليزية)</span></li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brandGold-500"></i> <span id="lp-3">تحضير مكثف للامتحانات الرسمية</span></li>
+                    </ul>
+                </div>
+
+                <!-- Middle Level -->
+                <div class="bg-slate-50 dark:bg-slate-800/60 rounded-3xl p-8 border border-slate-200 dark:border-slate-700/80 hover:border-brandGold-400 transition-all shadow-sm hover:shadow-xl flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-brandNavy-600 text-white flex items-center justify-center font-black text-2xl mb-6 shadow-md">
+                            <i class="fa-solid fa-book-bookmark text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-black text-brandNavy-900 dark:text-white mb-2" id="lvl-middle-title">الطور المتوسط</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6" id="lvl-middle-desc">
+                            تركيز خاص على المواد العلمية والأدبية الأساسية مع إعداد منهجية دقيقة لشهادة التعليم المتوسط (BEM).
+                        </p>
+                    </div>
+                    <ul class="space-y-2.5 border-t border-slate-200 dark:border-slate-700 pt-6 text-xs font-bold text-slate-700 dark:text-slate-300">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brandNavy-600 dark:text-brandGold-400"></i> <span id="lm-1">دروس دعم في الرياضيات والفيزياء والعلوم</span></li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brandNavy-600 dark:text-brandGold-400"></i> <span id="lm-2">حل سلاسل تمارين وامتحانات نموذجية</span></li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brandNavy-600 dark:text-brandGold-400"></i> <span id="lm-3">تأطير من طرف أساتذة ذوي خبرة عالية</span></li>
+                    </ul>
+                </div>
+
+                <!-- Secondary Level -->
+                <div class="bg-slate-50 dark:bg-slate-800/60 rounded-3xl p-8 border border-slate-200 dark:border-slate-700/80 hover:border-brandGold-400 transition-all shadow-sm hover:shadow-xl flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-brandGold-400 text-brandNavy-900 flex items-center justify-center font-black text-2xl mb-6 shadow-md">
+                            <i class="fa-solid fa-user-graduate text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-black text-brandNavy-900 dark:text-white mb-2" id="lvl-high-title">الطور الثانوي</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6" id="lvl-high-desc">
+                            برامج مكثفة ودروس دعم مخصصة لطلاب الثانوية وشهادة البكالوريا (BAC) لجميع الشعب العلمية والأدبية.
+                        </p>
+                    </div>
+                    <ul class="space-y-2.5 border-t border-slate-200 dark:border-slate-700 pt-6 text-xs font-bold text-slate-700 dark:text-slate-300">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brandGold-500"></i> <span id="lh-1">شعب: علوم، رياضيات، تسيير، أداب</span></li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brandGold-500"></i> <span id="lh-2">منهجية الإجابة النموذجية في البكالوريا</span></li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brandGold-500"></i> <span id="lh-3">متابعة النفسية والمنهجية قبل الامتحانات</span></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-20 bg-slate-100 dark:bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brandGold-600 dark:text-brandGold-400 font-extrabold text-xs uppercase tracking-wider bg-brandGold-400/10 px-3.5 py-1.5 rounded-full border border-brandGold-400/20" id="sec-serv-badge">خدمات متميزة</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-brandNavy-900 dark:text-white mt-3" id="sec-serv-title">البرامج والخدمات الخاصة</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-md">
+                    <div class="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 flex items-center justify-center text-xl font-extrabold mb-4">
+                        <i class="fa-solid fa-chalkboard-user"></i>
+                    </div>
+                    <h3 class="text-xl font-extrabold text-brandNavy-900 dark:text-white mb-2" id="serv-support-title">دروس الدعم المدرسي</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed" id="serv-support-desc">
+                        حصص دعم وتقوية متواصلة مسائية وفي عطلة نهاية الأسبوع لجميع المستويات لمساعدة التلاميذ على تجاوز الصعوبات الأكاديمية.
+                    </p>
+                </div>
+
+                <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-md">
+                    <div class="w-12 h-12 rounded-xl bg-amber-100 dark:bg-amber-900/40 text-amber-600 dark:text-amber-400 flex items-center justify-center text-xl font-extrabold mb-4">
+                        <i class="fa-solid fa-language"></i>
+                    </div>
+                    <h3 class="text-xl font-extrabold text-brandNavy-900 dark:text-white mb-2" id="serv-lang-title">تعليم اللغات الحية</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed" id="serv-lang-desc">
+                        دورات متخصصة في اللغة الفرنسية، الإنجليزية، والألمانية للكبار والصغار باستخدام طرق تفاعلية حديثة للتمكن من المحادثة والقواعد.
+                    </p>
+                </div>
+
+                <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-md">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl font-extrabold mb-4">
+                        <i class="fa-solid fa-shapes"></i>
+                    </div>
+                    <h3 class="text-xl font-extrabold text-brandNavy-900 dark:text-white mb-2" id="serv-preschool-title">أقسام براعم (التحضيري)</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed" id="serv-preschool-desc">
+                        فضاء تحضيري ممتع للأطفال الصغار يدمج بين اللعب التعلمي، تطوير المهارات الحركية، والتهيئة النفسية للدخول المدرسي.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="calculator" class="py-20 bg-brandNavy-900 text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-5 space-y-4">
+                    <span class="text-brandGold-400 font-bold text-xs uppercase tracking-wider bg-white/10 px-3.5 py-1.5 rounded-full border border-white/10" id="calc-badge">الحاسبة التفاعلية</span>
+                    <h2 class="text-3xl sm:text-4xl font-black leading-tight" id="calc-title">تقدير تكاليف التسجيل والدعم</h2>
+                    <p class="text-slate-300 text-sm leading-relaxed" id="calc-desc">
+                        اختر الطور والخدمات التي ترغب فيها لحساب التكلفة التقديرية الشهرية أو الفصلية مباشرة.
+                    </p>
+                </div>
+
+                <div class="lg:col-span-7 bg-slate-800/90 border border-slate-700 p-6 sm:p-8 rounded-3xl backdrop-blur-md shadow-2xl">
+                    <form id="calc-form" onchange="runCalculator()" class="space-y-6">
+                        
+                        <div>
+                            <label class="block text-sm font-extrabold text-slate-200 mb-3" id="calc-lbl-level">1. اختر الطور التعليمي الرئيسي</label>
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="calc-level" value="3000" checked class="peer sr-only">
+                                    <div class="p-3 text-center border border-slate-600 rounded-xl peer-checked:border-brandGold-400 peer-checked:bg-brandGold-400/20 peer-checked:text-brandGold-400 font-bold text-xs">
+                                        <p id="calc-opt-1">ابتدائي / براعم</p>
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="calc-level" value="4000" class="peer sr-only">
+                                    <div class="p-3 text-center border border-slate-600 rounded-xl peer-checked:border-brandGold-400 peer-checked:bg-brandGold-400/20 peer-checked:text-brandGold-400 font-bold text-xs">
+                                        <p id="calc-opt-2">الطور المتوسط</p>
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="calc-level" value="5000" class="peer sr-only">
+                                    <div class="p-3 text-center border border-slate-600 rounded-xl peer-checked:border-brandGold-400 peer-checked:bg-brandGold-400/20 peer-checked:text-brandGold-400 font-bold text-xs">
+                                        <p id="calc-opt-3">الطور الثانوي</p>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-extrabold text-slate-200 mb-3" id="calc-lbl-addons">2. الدورات الإضافية واللغات</label>
+                            <div class="space-y-2">
+                                <label class="flex items-center justify-between p-3 border border-slate-700 rounded-xl cursor-pointer hover:bg-slate-700/40">
+                                    <div class="flex items-center gap-3">
+                                        <input type="checkbox" id="calc-lang" value="2500" class="w-4 h-4 text-brandGold-400 rounded bg-slate-900 border-slate-600">
+                                        <span class="text-xs font-extrabold" id="calc-addon-lang">دورة اللغات الحية (فرنسية/إنجليزية)</span>
+                                    </div>
+                                    <span class="text-xs text-brandGold-400 font-bold">+ 2,500 DZD</span>
+                                </label>
+
+                                <label class="flex items-center justify-between p-3 border border-slate-700 rounded-xl cursor-pointer hover:bg-slate-700/40">
+                                    <div class="flex items-center gap-3">
+                                        <input type="checkbox" id="calc-intensive" value="2000" class="w-4 h-4 text-brandGold-400 rounded bg-slate-900 border-slate-600">
+                                        <span class="text-xs font-extrabold" id="calc-addon-intensive">سلاسل دعم مكثفة قبل الامتحانات</span>
+                                    </div>
+                                    <span class="text-xs text-brandGold-400 font-bold">+ 2,000 DZD</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 border-t border-slate-700 flex flex-col sm:flex-row justify-between items-center gap-4 bg-slate-900/80 p-5 rounded-2xl">
+                            <div>
+                                <p class="text-xs text-slate-400 font-bold" id="calc-res-label">المبلغ التقديري الشهري</p>
+                                <p class="text-3xl font-black text-brandGold-400 mt-1" id="calc-result">3,000 DZD</p>
+                            </div>
+                            <a href="#inscription" class="w-full sm:w-auto px-6 py-3 gold-badge text-brandNavy-900 font-black rounded-xl text-center text-xs shadow-lg">
+                                <span id="calc-btn-apply">تأكيد التسجيل</span>
+                            </a>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="inscription" class="py-20 bg-slate-50 dark:bg-slate-900">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white dark:bg-slate-800 p-8 sm:p-10 rounded-3xl border border-slate-200 dark:border-slate-700 shadow-xl">
+                
+                <div class="text-center max-w-xl mx-auto mb-8">
+                    <span class="text-brandNavy-600 dark:text-brandGold-400 font-extrabold text-xs uppercase tracking-wider bg-brandNavy-50 dark:bg-brandNavy-950 px-3.5 py-1.5 rounded-full" id="reg-badge">استمارة التسجيل المباشر</span>
+                    <h2 class="text-2xl sm:text-3xl font-black text-brandNavy-900 dark:text-white mt-3" id="reg-title">سجل ابنك في الوثبة سكول</h2>
+                    <p class="text-slate-600 dark:text-slate-400 text-xs sm:text-sm mt-1" id="reg-desc">قم بملء البيانات وسيقوم فريق الإدارة بالتواصل معك لتأكيد التسجيل وحجز المقعد.</p>
+                </div>
+
+                <form id="enrollment-form" onsubmit="submitForm(event)" class="space-y-4">
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-extrabold text-slate-700 dark:text-slate-300 uppercase mb-1" id="f-parent-name">اسم ولي الأمر</label>
+                            <input type="text" required placeholder="اللقب والاسم" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-3 text-xs focus:outline-none focus:border-brandNavy-600">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-extrabold text-slate-700 dark:text-slate-300 uppercase mb-1" id="f-phone">رقم الهاتف</label>
+                            <input type="tel" required placeholder="07XX XX XX XX" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-3 text-xs focus:outline-none focus:border-brandNavy-600" dir="ltr">
+                        </div>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-extrabold text-slate-700 dark:text-slate-300 uppercase mb-1" id="f-student-name">اسم التلميذ</label>
+                            <input type="text" required placeholder="اسم التلميذ الثلاثي" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-3 text-xs focus:outline-none focus:border-brandNavy-600">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-extrabold text-slate-700 dark:text-slate-300 uppercase mb-1" id="f-level">المستوى المطلوب</label>
+                            <select required class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-3 text-xs focus:outline-none focus:border-brandNavy-600">
+                                <option value="" id="opt-select">اختر المستوى الدراسي...</option>
+                                <option>أقسام براعم (تحضيري)</option>
+                                <option>الطور الابتدائي</option>
+                                <option>الطور المتوسط (BEM)</option>
+                                <option>الطور الثانوي (BAC)</option>
+                                <option>تعليم اللغات الحية</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-extrabold text-slate-700 dark:text-slate-300 uppercase mb-1" id="f-notes">ملاحظات إضافية</label>
+                        <textarea rows="3" placeholder="المواد المطلوبة أو أي استفسار آخر..." class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-3 text-xs focus:outline-none focus:border-brandNavy-600"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-4 bg-brandNavy-600 hover:bg-brandNavy-800 text-white font-extrabold rounded-xl shadow-lg transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        <span id="f-btn-submit">إرسال طلب التسجيل</span>
+                    </button>
+                </form>
+
+                <div id="form-msg" class="hidden mt-4 p-4 bg-emerald-100 border border-emerald-300 text-emerald-800 rounded-xl text-xs font-bold flex items-center gap-2">
+                    <i class="fa-solid fa-circle-check text-lg"></i>
+                    <span id="f-msg-text">تم إرسال طلبكم بنجاح! سنتصل بكم في أقرب وقت.</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 bg-white dark:bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12">
+                
+                <div class="lg:col-span-6 space-y-6">
+                    <span class="text-brandNavy-600 dark:text-brandGold-400 font-extrabold text-xs uppercase tracking-wider bg-brandNavy-50 dark:bg-brandNavy-900 px-3.5 py-1.5 rounded-full" id="c-badge">معلومات الاتصال</span>
+                    <h2 class="text-3xl font-black text-brandNavy-900 dark:text-white" id="c-title">تواصل مع إدارة الوثبة سكول</h2>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed" id="c-desc">
+                        نحن يسعدنا استقبالكم واستفساراتكم طيلة أيام الأسبوع. لا تترددوا في الاتصال بنا أو زيارتنا في مقر المدرسة بالهاشمية.
+                    </p>
+
+                    <div class="space-y-4 pt-2">
+                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                            <div class="w-10 h-10 rounded-xl bg-brandGold-400 text-brandNavy-900 flex items-center justify-center text-lg font-bold shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-extrabold text-sm text-brandNavy-900 dark:text-white" id="c-phone-lbl">أرقام الهاتف</h4>
+                                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1" dir="ltr">0796 95 53 70 / 026 87 17 01</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                            <div class="w-10 h-10 rounded-xl bg-brandNavy-600 text-white flex items-center justify-center text-lg font-bold shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-extrabold text-sm text-brandNavy-900 dark:text-white" id="c-email-lbl">البريد الإلكتروني</h4>
+                                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">elwathbaschool1@gmail.com</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                            <div class="w-10 h-10 rounded-xl bg-brandGold-400 text-brandNavy-900 flex items-center justify-center text-lg font-bold shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-extrabold text-sm text-brandNavy-900 dark:text-white" id="c-loc-lbl">العنوان التجاري والمقر</h4>
+                                <p class="text-xs text-slate-600 dark:text-slate-400 mt-1" id="c-loc-val">الهاشمية - ولاية البويرة، الجزائر</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6 flex flex-col justify-between">
+                    <div class="bg-brandNavy-900 text-white p-8 rounded-3xl shadow-2xl space-y-6">
+                        <h3 class="text-xl font-extrabold" id="fb-box-title">تابعونا على وسائل التواصل الاجتماعي</h3>
+                        <p class="text-slate-300 text-xs leading-relaxed" id="fb-box-desc">
+                            انضموا إلى صفحتنا الرسمية على فيسبوك لمتابعة أحدث أخبار الامتحانات، الجداول الزمانية، والنشاطات التربوية.
+                        </p>
+                        
+                        <a href="https://facebook.com" target="_blank" class="inline-flex items-center gap-3 bg-white text-brandNavy-900 font-black px-6 py-3 rounded-xl hover:bg-brandGold-400 transition-all text-xs">
+                            <i class="fa-brands fa-facebook-f text-lg text-blue-600"></i>
+                            <span>Elwathba School</span>
+                        </a>
+                    </div>
+
+                    <div class="mt-6 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 text-center">
+                        <i class="fa-solid fa-map-location-dot text-4xl text-brandGold-500 mb-3"></i>
+                        <h4 class="font-extrabold text-sm text-brandNavy-900 dark:text-white" id="map-title">موقع المدرسة بالهاشمية</h4>
+                        <p class="text-xs text-slate-500 mt-1" id="map-desc">سهولة الوصول بالقرب من وسط مدينة الهاشمية - البويرة</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-brandNavy-900 text-slate-400 text-xs py-10 border-t border-brandNavy-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+            <div class="flex items-center justify-center gap-3">
+                <i class="fa-solid fa-graduation-cap text-2xl text-brandGold-400"></i>
+                <span class="text-lg font-black text-white">الوثبة سكول - EL WATHBA SCHOOL</span>
+            </div>
+            <p class="text-slate-400 font-bold" id="footer-slogan">أكبر من مجرد مدرسة ... نحن عائلة  bf</p>
+            <p class="text-slate-500 pt-4 border-t border-brandNavy-800">&copy; 2026 الوثبة سكول (El Hachimia - Bouira). جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script>
+        const dict = {
+            ar: {
+                dir: 'rtl',
+                logoTitle: 'الوثبة سكول',
+                logoSub: 'EL WATHBA SCHOOL',
+                topLoc: 'الهاشمية - البويرة',
+                navHome: 'الرئيسية',
+                navLevels: 'الأطوار التعليمية',
+                navServices: 'خدماتنا ودروس الدعم',
+                navCalc: 'حاسبة التسجيل',
+                navContact: 'اتصل بنا',
+                navBtnReg: 'تسجيل تلميذ جديد',
+                heroBadge: 'مؤسسة تعليمية وتدريبية متميزة - الهاشمية البويرة',
+                heroTitle1: 'مدرسة الوثبة سكول',
+                heroSlogan: 'أكبر من مجرد مدرسة ... نحن عائلة',
+                heroDesc: 'نقدم بيئة تعليمية متكاملة تجمع بين التأطير التربوي العالي، الدروس التدعيمية المكثفة، تعليم اللغات الحية، وأقسام براعم التحضيرية لبناء جيل متميز وواثق.',
+                tagPrimary: 'الابتدائي',
+                tagMiddle: 'المتوسط',
+                tagHigh: 'الثانوي',
+                tagLang: 'تعليم اللغات',
+                tagPreschool: 'أقسام براعم',
+                heroApply: 'سجل ابنك الآن',
+                heroCall: 'إتصال مباشر',
+                secLevelsBadge: 'الأطوار التعليمية الشاملة',
+                secLevelsTitle: 'المراحل الدراسية بمدرسة الوثبة',
+                secLevelsDesc: 'تغطية تعليمية وتدعيمية متكاملة لجميع الفئات والمراحل الدراسية وفق مناهج حديثة وتأطير متمرس.',
+                lvlPrimaryTitle: 'الطور الابتدائي',
+                lvlPrimaryDesc: 'بناء القاعدة التأسيسية المتينة في القراءة، الكتابة، الحساب واللغات، مع مراعاة الفروق الفردية وترسيخ حب التعلم.',
+                lp1: 'متابعة يومية مستمرة للواجبات',
+                lp2: 'تقوية اللغات (عربية، فرنسية، إنجليزية)',
+                lp3: 'تحضير مكثف للامتحانات الرسمية',
+                lvlMiddleTitle: 'الطور المتوسط',
+                lvlMiddleDesc: 'تركيز خاص على المواد العلمية والأدبية الأساسية مع إعداد منهجية دقيقة لشهادة التعليم المتوسط (BEM).',
+                lm1: 'دروس دعم في الرياضيات والفيزياء والعلوم',
+                lm2: 'حل سلاسل تمارين وامتحانات نموذجية',
+                lm3: 'تأطير من طرف أساتذة ذوي خبرة عالية',
+                lvlHighTitle: 'الطور الثانوي',
+                lvlHighDesc: 'برامج مكثفة ودروس دعم مخصصة لطلاب الثانوية وشهادة البكالوريا (BAC) لجميع الشعب العلمية والأدبية.',
+                lh1: 'شعب: علوم، رياضيات، تسيير، أداب',
+                lh2: 'منهجية الإجابة النموذجية في البكالوريا',
+                lh3: 'متابعة النفسية والمنهجية قبل الامتحانات',
+                secServBadge: 'خدمات متميزة',
+                secServTitle: 'البرامج والخدمات الخاصة',
+                servSuppTitle: 'دروس الدعم المدرسي',
+                servSuppDesc: 'حصص دعم وتقوية متواصلة مسائية وفي عطلة نهاية الأسبوع لجميع المستويات لمساعدة التلاميذ على تجاوز الصعوبات الأكاديمية.',
+                servLangTitle: 'تعليم اللغات الحية',
+                servLangDesc: 'دورات متخصصة في اللغة الفرنسية، الإنجليزية، والألمانية للكبار والصغار باستخدام طرق تفاعلية حديثة للتمكن من المحادثة والقواعد.',
+                servPreTitle: 'أقسام براعم (التحضيري)',
+                servPreDesc: 'فضاء تحضيري ممتع للأطفال الصغار يدمج بين اللعب التعلمي، تطوير المهارات الحركية، والتهيئة النفسية للدخول المدرسي.',
+                calcBadge: 'الحاسبة التفاعلية',
+                calcTitle: 'تقدير تكاليف التسجيل والدعم',
+                calcDesc: 'اختر الطور والخدمات التي ترغب فيها لحساب التكلفة التقديرية الشهرية أو الفصلية مباشرة.',
+                calcLblLevel: '1. اختر الطور التعليمي الرئيسي',
+                calcOpt1: 'ابتدائي / براعم',
+                calcOpt2: 'الطور المتوسط',
+                calcOpt3: 'الطور الثانوي',
+                calcAddons: '2. الدورات الإضافية واللغات',
+                calcAddonLang: 'دورة اللغات الحية (فرنسية/إنجليزية)',
+                calcAddonIntensive: 'سلاسل دعم مكثفة قبل الامتحانات',
+                calcResLbl: 'المبلغ التقديري الشهري',
+                calcBtnApply: 'تأكيد التسجيل',
+                regBadge: 'استمارة التسجيل المباشر',
+                regTitle: 'سجل ابنك في الوثبة سكول',
+                regDesc: 'قم بملء البيانات وسيقوم فريق الإدارة بالتواصل معك لتأكيد التسجيل وحجز المقعد.',
+                fParentName: 'اسم ولي الأمر',
+                fPhone: 'رقم الهاتف',
+                fStudentName: 'اسم التلميذ',
+                fLevel: 'المستوى المطلوب',
+                optSelect: 'اختر المستوى الدراسي...',
+                fNotes: 'ملاحظات إضافية',
+                fBtnSubmit: 'إرسال طلب التسجيل',
+                fMsgText: 'تم إرسال طلبكم بنجاح! سنتصل بكم في أقرب وقت.',
+                cBadge: 'معلومات الاتصال',
+                cTitle: 'تواصل مع إدارة الوثبة سكول',
+                cDesc: 'نحن يسعدنا استقبالكم واستفساراتكم طيلة أيام الأسبوع. لا تترددوا في الاتصال بنا أو زيارتنا في مقر المدرسة بالهاشمية.',
+                cPhoneLbl: 'أرقام الهاتف',
+                cEmailLbl: 'البريد الإلكتروني',
+                cLocLbl: 'العنوان التجاري والمقر',
+                cLocVal: 'الهاشمية - ولاية البويرة، الجزائر',
+                fbBoxTitle: 'تابعونا على وسائل التواصل الاجتماعي',
+                fbBoxDesc: 'انضموا إلى صفحتنا الرسمية على فيسبوك لمتابعة أحدث أخبار الامتحانات، الجداول الزمانية، والنشاطات التربوية.',
+                mapTitle: 'موقع المدرسة بالهاشمية',
+                mapDesc: 'سهولة الوصول بالقرب من وسط مدينة الهاشمية - البويرة',
+                footerSlogan: 'أكبر من مجرد مدرسة ... نحن عائلة'
+            },
+            fr: {
+                dir: 'ltr',
+                logoTitle: 'EL WATHBA SCHOOL',
+                logoSub: 'الوثبة سكول',
+                topLoc: 'El Hachimia - Bouira',
+                navHome: 'Accueil',
+                navLevels: 'Niveaux Scolaires',
+                navServices: 'Services & Soutien',
+                navCalc: 'Calculateur',
+                navContact: 'Contact',
+                navBtnReg: 'Inscrire un Élève',
+                heroBadge: 'Établissement d\'Enseignement & Formation - El Hachimia',
+                heroTitle1: 'EL WATHBA SCHOOL',
+                heroSlogan: 'Plus qu\'une école... nous sommes une famille',
+                heroDesc: 'Un environnement éducatif complet alliant encadrement pédagogique de haut niveau, cours de soutien intensifs, langues vivantes et classes préparatoires Bourgeon.',
+                tagPrimary: 'Primaire',
+                tagMiddle: 'Moyen (CEM)',
+                tagHigh: 'Secondaire (BAC)',
+                tagLang: 'Langues Vivantes',
+                tagPreschool: 'Classes Bourgeon',
+                heroApply: 'Inscrire Maintenant',
+                heroCall: 'Appel Direct',
+                secLevelsBadge: 'Niveaux d\'Enseignement',
+                secLevelsTitle: 'Les Cycles d\'Études à El Wathba',
+                secLevelsDesc: 'Un accompagnement complet adapté à tous les niveaux scolaires avec des méthodes modernes.',
+                lvlPrimaryTitle: 'Cycle Primaire',
+                lvlPrimaryDesc: 'Acquisition des bases solides en lecture, écriture, calcul et langues dans un cadre stimulant.',
+                lp1: 'Suivi quotidien des devoirs à la maison',
+                lp2: 'Renforcement linguistique (Arabe, FR, EN)',
+                lp3: 'Préparation ciblée aux examens',
+                lvlMiddleTitle: 'Cycle Moyen (CEM)',
+                lvlMiddleDesc: 'Accompagnement rigoureux dans les matières scientifiques et littéraires avec préparation méthodique au BEM.',
+                lm1: 'Soutien en Maths, Physique & Sciences',
+                lm2: 'Exercices et sujets d\'examens blancs',
+                lm3: 'Professeurs expérimentés et qualifiés',
+                lvlHighTitle: 'Cycle Secondaire (BAC)',
+                lvlHighDesc: 'Programmes intensifs et cours de soutien dédiés aux lycéens et candidats au Baccalauréat.',
+                lh1: 'Filières: Scientifique, Math, Gestion, Lettres',
+                lh2: 'Méthodologie de réponse aux épreuves du BAC',
+                lh3: 'Coaching pédagogique et psychologique',
+                secServBadge: 'Services Spécialisés',
+                secServTitle: 'Nos Programmes et Offres Spéciales',
+                servSuppTitle: 'Cours de Soutien Scolaire',
+                servSuppDesc: 'Séances de soutien du soir et du week-end pour aider les élèves à surmonter leurs difficultés.',
+                servLangTitle: 'Enseignement des Langues',
+                servLangDesc: 'Cours intensifs de Français, Anglais et Allemand pour enfants et adultes avec méthodes interactives.',
+                servPreTitle: 'Classes Bourgeon (Préparatoire)',
+                servPreDesc: 'Espace d\'éveil ludique pour préparer les plus jeunes à une intégration scolaire réussie.',
+                calcBadge: 'Calculateur Interactif',
+                calcTitle: 'Estimation des Frais d\'Inscription',
+                calcDesc: 'Sélectionnez le cycle et les options pour calculer le montant mensuel estimé.',
+                calcLblLevel: '1. Choisissez le Cycle Principal',
+                calcOpt1: 'Primaire / Bourgeon',
+                calcOpt2: 'Cycle Moyen (CEM)',
+                calcOpt3: 'Cycle Secondaire (BAC)',
+                calcAddons: '2. Modules Supplémentaires',
+                calcAddonLang: 'Cours de Langues (FR / EN)',
+                calcAddonIntensive: 'Séries de Révision Intensive',
+                calcResLbl: 'Montant Mensuel Estimé',
+                calcBtnApply: 'Valider l\'Inscription',
+                regBadge: 'Formulaire d\'Inscription',
+                regTitle: 'Inscrivez votre enfant à El Wathba',
+                regDesc: 'Remplissez le formulaire, notre administration vous contactera pour confirmer l\'inscription.',
+                fParentName: 'Nom du Parent / Tuteur',
+                fPhone: 'Numéro de Téléphone',
+                fStudentName: 'Nom & Prénom de l\'Élève',
+                fLevel: 'Niveau Souhaité',
+                optSelect: 'Sélectionnez le niveau...',
+                fNotes: 'Remarques ou Questions',
+                fBtnSubmit: 'Envoyer la Demande',
+                fMsgText: 'Demande envoyée avec succès! Nous vous contacterons très bientôt.',
+                cBadge: 'Contactez-nous',
+                cTitle: 'Contactez l\'Administration El Wathba',
+                cDesc: 'Nous sommes ravis de vous accueillir. N\'hésitez pas à nous appeler ou à nous rendre visite à El Hachimia.',
+                cPhoneLbl: 'Téléphones',
+                cEmailLbl: 'Adresse E-mail',
+                cLocLbl: 'Adresse & Localisation',
+                cLocVal: 'El Hachimia - Wilaya de Bouira, Algérie',
+                fbBoxTitle: 'Suivez-nous sur les Réseaux',
+                fbBoxDesc: 'Rejoignez notre page Facebook pour suivre le calendrier des cours et l\'actualité de l\'école.',
+                mapTitle: 'Emplacement à El Hachimia',
+                mapDesc: 'Facilement accessible près du centre-ville d\'El Hachimia - Bouira',
+                footerSlogan: 'Plus qu\'une école... nous sommes une famille'
+            }
+        };
+
+        function setLanguage(lang) {
+            const d = dict[lang];
+            document.documentElement.setAttribute('lang', lang);
+            document.documentElement.setAttribute('dir', d.dir);
+
+            // Toggle language buttons style
+            if(lang === 'ar') {
+                document.getElementById('btn-lang-ar').className = "px-2.5 py-0.5 rounded text-xs font-bold bg-brandGold-400 text-brandNavy-900 transition-all";
+                document.getElementById('btn-lang-fr').className = "px-2.5 py-0.5 rounded text-xs font-bold text-slate-300 hover:text-white transition-all";
+            } else {
+                document.getElementById('btn-lang-fr').className = "px-2.5 py-0.5 rounded text-xs font-bold bg-brandGold-400 text-brandNavy-900 transition-all";
+                document.getElementById('btn-lang-ar').className = "px-2.5 py-0.5 rounded text-xs font-bold text-slate-300 hover:text-white transition-all";
+            }
+
+            // Update Text Contents
+            document.getElementById('logo-title').innerText = d.logoTitle;
+            document.getElementById('logo-subtitle').innerText = d.logoSub;
+            document.getElementById('top-location').innerText = d.topLoc;
+            document.getElementById('nav-home').innerText = d.navHome;
+            document.getElementById('nav-levels').innerText = d.navLevels;
+            document.getElementById('nav-services').innerText = d.navServices;
+            document.getElementById('nav-calculator').innerText = d.navCalc;
+            document.getElementById('nav-contact').innerText = d.navContact;
+            document.getElementById('nav-btn-register').innerText = d.navBtnReg;
+
+            document.getElementById('m-nav-home').innerText = d.navHome;
+            document.getElementById('m-nav-levels').innerText = d.navLevels;
+            document.getElementById('m-nav-services').innerText = d.navServices;
+            document.getElementById('m-nav-calc').innerText = d.navCalc;
+            document.getElementById('m-nav-contact').innerText = d.navContact;
+            document.getElementById('m-nav-btn').innerText = d.navBtnReg;
+
+            document.getElementById('hero-badge').innerText = d.heroBadge;
+            document.getElementById('hero-title-1').innerText = d.heroTitle1;
+            document.getElementById('hero-slogan').innerText = d.heroSlogan;
+            document.getElementById('hero-description').innerText = d.heroDesc;
+            document.getElementById('tag-primary').innerText = d.tagPrimary;
+            document.getElementById('tag-middle').innerText = d.tagMiddle;
+            document.getElementById('tag-high').innerText = d.tagHigh;
+            document.getElementById('tag-languages').innerText = d.tagLang;
+            document.getElementById('tag-preschool').innerText = d.tagPreschool;
+            document.getElementById('hero-btn-apply').innerText = d.heroApply;
+            document.getElementById('hero-btn-call').innerText = d.heroCall;
+
+            document.getElementById('sec-levels-badge').innerText = d.secLevelsBadge;
+            document.getElementById('sec-levels-title').innerText = d.secLevelsTitle;
+            document.getElementById('sec-levels-desc').innerText = d.secLevelsDesc;
+            document.getElementById('lvl-primary-title').innerText = d.lvlPrimaryTitle;
+            document.getElementById('lvl-primary-desc').innerText = d.lvlPrimaryDesc;
+            document.getElementById('lp-1').innerText = d.lp1;
+            document.getElementById('lp-2').innerText = d.lp2;
+            document.getElementById('lp-3').innerText = d.lp3;
+            document.getElementById('lvl-middle-title').innerText = d.lvlMiddleTitle;
+            document.getElementById('lvl-middle-desc').innerText = d.lvlMiddleDesc;
+            document.getElementById('lm-1').innerText = d.lm1;
+            document.getElementById('lm-2').innerText = d.lm2;
+            document.getElementById('lm-3').innerText = d.lm3;
+            document.getElementById('lvl-high-title').innerText = d.lvlHighTitle;
+            document.getElementById('lvl-high-desc').innerText = d.lvlHighDesc;
+            document.getElementById('lh-1').innerText = d.lh1;
+            document.getElementById('lh-2').innerText = d.lh2;
+            document.getElementById('lh-3').innerText = d.lh3;
+
+            document.getElementById('sec-serv-badge').innerText = d.secServBadge;
+            document.getElementById('sec-serv-title').innerText = d.secServTitle;
+            document.getElementById('serv-support-title').innerText = d.servSuppTitle;
+            document.getElementById('serv-support-desc').innerText = d.servSuppDesc;
+            document.getElementById('serv-lang-title').innerText = d.servLangTitle;
+            document.getElementById('serv-lang-desc').innerText = d.servLangDesc;
+            document.getElementById('serv-preschool-title').innerText = d.servPreTitle;
+            document.getElementById('serv-preschool-desc').innerText = d.servPreDesc;
+
+            document.getElementById('calc-badge').innerText = d.calcBadge;
+            document.getElementById('calc-title').innerText = d.calcTitle;
+            document.getElementById('calc-desc').innerText = d.calcDesc;
+            document.getElementById('calc-lbl-level').innerText = d.calcLblLevel;
+            document.getElementById('calc-opt-1').innerText = d.calcOpt1;
+            document.getElementById('calc-opt-2').innerText = d.calcOpt2;
+            document.getElementById('calc-opt-3').innerText = d.calcOpt3;
+            document.getElementById('calc-lbl-addons').innerText = d.calcAddons;
+            document.getElementById('calc-addon-lang').innerText = d.calcAddonLang;
+            document.getElementById('calc-addon-intensive').innerText = d.calcAddonIntensive;
+            document.getElementById('calc-res-label').innerText = d.calcResLbl;
+            document.getElementById('calc-btn-apply').innerText = d.calcBtnApply;
+
+            document.getElementById('reg-badge').innerText = d.regBadge;
+            document.getElementById('reg-title').innerText = d.regTitle;
+            document.getElementById('reg-desc').innerText = d.regDesc;
+            document.getElementById('f-parent-name').innerText = d.fParentName;
+            document.getElementById('f-phone').innerText = d.fPhone;
+            document.getElementById('f-student-name').innerText = d.fStudentName;
+            document.getElementById('f-level').innerText = d.fLevel;
+            document.getElementById('opt-select').innerText = d.optSelect;
+            document.getElementById('f-notes').innerText = d.fNotes;
+            document.getElementById('f-btn-submit').innerText = d.fBtnSubmit;
+            document.getElementById('f-msg-text').innerText = d.fMsgText;
+
+            document.getElementById('c-badge').innerText = d.cBadge;
+            document.getElementById('c-title').innerText = d.cTitle;
+            document.getElementById('c-desc').innerText = d.cDesc;
+            document.getElementById('c-phone-lbl').innerText = d.cPhoneLbl;
+            document.getElementById('c-email-lbl').innerText = d.cEmailLbl;
+            document.getElementById('c-loc-lbl').innerText = d.cLocLbl;
+            document.getElementById('c-loc-val').innerText = d.cLocVal;
+            document.getElementById('fb-box-title').innerText = d.fbBoxTitle;
+            document.getElementById('fb-box-desc').innerText = d.fbBoxDesc;
+            document.getElementById('map-title').innerText = d.mapTitle;
+            document.getElementById('map-desc').innerText = d.mapDesc;
+            document.getElementById('footer-slogan').innerText = d.footerSlogan;
+        }
+
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        function runCalculator() {
+            const levelRadio = document.querySelector('input[name="calc-level"]:checked');
+            const levelVal = parseInt(levelRadio ? levelRadio.value : 3000);
+            
+            const langVal = document.getElementById('calc-lang').checked ? parseInt(document.getElementById('calc-lang').value) : 0;
+            const intensiveVal = document.getElementById('calc-intensive').checked ? parseInt(document.getElementById('calc-intensive').value) : 0;
+
+            const total = levelVal + langVal + intensiveVal;
+            document.getElementById('calc-result').innerText = total.toLocaleString('fr-FR') + ' DZD';
+        }
+
+        function submitForm(e) {
+            e.preventDefault();
+            const msg = document.getElementById('form-msg');
+            msg.classList.remove('hidden');
+            document.getElementById('enrollment-form').reset();
+            setTimeout(() => {
+                msg.classList.add('hidden');
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
